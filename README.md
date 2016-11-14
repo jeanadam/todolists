@@ -10,7 +10,7 @@ The functional goal of this app is a web application to
 manage todo lists.
 
 ### Functional Requirements
-All the models and relationships required for this web app is:
+All the models and relationships required for this web app are:
 
     * User
     * TodoList
