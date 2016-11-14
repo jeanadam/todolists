@@ -1,5 +1,5 @@
 ## Sample Todo List App
-It to implements:
+It implements:
 
   * Nested resources
   * Authenication
