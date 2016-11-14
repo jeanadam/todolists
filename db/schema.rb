@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161001181701) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "profiles", force: :cascade do |t|
     t.string   "gender"
     t.integer  "birth_year"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20161001181701) do
     t.integer  "user_id"
   end
 
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "todo_items", force: :cascade do |t|
     t.date     "due_date"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20161001181701) do
     t.integer  "todo_list_id"
   end
 
-  add_index "todo_items", ["todo_list_id"], name: "index_todo_items_on_todo_list_id"
+  add_index "todo_items", ["todo_list_id"], name: "index_todo_items_on_todo_list_id", using: :btree
 
   create_table "todo_lists", force: :cascade do |t|
     t.string   "list_name"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 20161001181701) do
     t.integer  "user_id"
   end
 
-  add_index "todo_lists", ["user_id"], name: "index_todo_lists_on_user_id"
+  add_index "todo_lists", ["user_id"], name: "index_todo_lists_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -54,4 +57,7 @@ ActiveRecord::Schema.define(version: 20161001181701) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "profiles", "users"
+  add_foreign_key "todo_items", "todo_lists"
+  add_foreign_key "todo_lists", "users"
 end
