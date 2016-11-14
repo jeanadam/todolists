@@ -1,0 +1,42 @@
+<div class="container">
+  <%= form_for(@todo_list) do |f| %>
+    <% if @todo_list.errors.any? %>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <div id="error_explanation">
+              <h4><%= pluralize(@todo_list.errors.count, "error") %> prohibited this todo_list from being saved:</h4>
+              <ul>
+                <% @todo_list.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="row m-t-30">
+      <div class="form-group">
+        <div class="col-sm-12 col-sm-9">
+          <%= f.label :list_name, "List Name" %><br/>
+          <%= f.text_field :list_name, class: 'form-control' %>
+        </div>
+        <div class="col-sm-12 col-sm-3">
+          <%= f.label :list_due_date, "Due Date" %><br/>
+          <%= f.date_select :list_due_date, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="row m-bt-30">
+      <div class="col-sm-12">
+        <div class="pull-right">
+          <%= button_tag type: :submit, class: 'btn btn-success', :id => 'change' do %>
+            <i class="glyphicon glyphicon-ok"></i> <%= @button_name %> 
+            <% end %>
+          <%= link_to raw('<span class="glyphicon glyphicon-remove-sign"></span> Back'), todo_lists_path, {class: 'btn btn-default', 'role': 'button'} %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

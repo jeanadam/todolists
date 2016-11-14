@@ -1,0 +1,57 @@
+<div class="container">
+  <%= form_for([@todo_list, @todo_item]) do |f| %>
+    <% if @todo_list.errors.any? %>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <div id="error_explanation">
+              <h2><%= pluralize(@todo_item.errors.count, "error") %> prohibited this todo_item from being saved:</h2>
+              <ul>
+                <% @todo_item.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <div class="row m-t-30">
+        <div class="col-sm-12 col-sm-9">
+          <%= f.label :title %><br>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="col-sm-12 col-sm-3">
+          <%= f.label :due_date %><br>
+          <%= f.date_select :due_date, class: "form-control"  %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class: "form-control"  %>
+      </div>
+    </div>
+    <% if @todo_item.persisted? %>
+      <div class="row">
+        <div class="col-sm-12">
+          <label class="checkbox pull-left">
+            Completed? <%= f.check_box :completed, class: "form-control" %>
+          </label>
+        </div>
+      </div>
+    <% end %>
+    <div class="row m-bt-30">
+      <div class="col-sm-12">
+        <div class="pull-right">
+          <%= button_tag type: :submit, class: 'btn btn-success', :id => 'add' do %>
+            <i class="glyphicon glyphicon-ok"></i> <%= @todo_item.persisted? ? "Change" : "Add" %>
+          <% end %>
+          <%= link_to raw('<span class="glyphicon glyphicon-remove-sign"></span> Back'),  @todo_list, {class: 'btn btn-default', 'role': 'button'} %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
