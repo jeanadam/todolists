@@ -49,11 +49,24 @@
     <footer>
     </footer>
     <!-- ========= Lazy load for javascript content ========== -->
-    <noscript>
+    <noscript id="deferred-styles">
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/<%= fontawesome_version %>/css/font-awesome.min.css">
     </noscript>
+    <script>
+      var loadDeferredStyles = function() {
+              var addStylesNode = document.getElementById("deferred-styles");
+              var replacement = document.createElement("div");
+              replacement.innerHTML = addStylesNode.textContent;
+              document.body.appendChild(replacement)
+              addStylesNode.parentElement.removeChild(addStylesNode);
+            };
+            var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+                webkitRequestAnimationFrame || msRequestAnimationFrame;
+            if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+            else window.addEventListener('load', loadDeferredStyles);
+    </script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/"+bootstrap_version+"/js/bootstrap.min.js", 
     "data-turbolinks-eval" => false %>
