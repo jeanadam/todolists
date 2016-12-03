@@ -6,9 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/<%= fontawesome_version %>/css/font-awesome.min.css">
   </head>
   <body>
     <!-- ========= Nav Bar (Menu) ========== -->
@@ -52,6 +49,11 @@
     <footer>
     </footer>
     <!-- ========= Lazy load for javascript content ========== -->
+    <noscript>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/<%= fontawesome_version %>/css/font-awesome.min.css">
+    </noscript>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/"+bootstrap_version+"/js/bootstrap.min.js", 
     "data-turbolinks-eval" => false %>
