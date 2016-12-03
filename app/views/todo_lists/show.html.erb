@@ -6,32 +6,33 @@
     <%= @todo_list.list_due_date %>
   </div>
   <div class="row">
-    <table class="table table-hover table-vert-align">
-      <thead class="thead-default">
-        <tr>
-          <th class="col-xs-12 col-sm-4">Title</th>
-          <th class="col-xs-12 col-sm-2">Due Date</th>
-          <th class="col-xs-12 col-sm-2">Description</th>
-          <th class="col-xs-12 col-sm-2">Completed</th>
-          <th class="col-xs-12 col-sm-2">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @todo_lists_items.each do |todo_item| %>
+    <div class="table-responsive">
+      <table class="table table-hover table-vert-align">
+        <thead class="thead-default">
           <tr>
-            <td><%= todo_item.title %></td>
-            <td><%= todo_item.due_date %></td>
-            <td><%= todo_item.description %></td>
-            <td><%= todo_item.completed %></td>
-            <td>
-              <%= link_to raw('<span class="glyphicon glyphicon-pencil"></span>'), edit_todo_list_todo_item_path(@todo_list, todo_item), {class: 'btn btn-default', title: 'Edit',  'data-placement': 'bottom', 'role': 'button'} %>
-
-              <%= link_to raw('<span class="glyphicon glyphicon-remove-sign"></span>'), [@todo_list,todo_item], {class: 'btn btn-default', title: 'Delete',  'data-placement': 'bottom', 'role': 'button', method: :delete, data: { confirm: 'Are you sure you want to delete the list?' }} %>
-            </td>
+            <th class="col-xs-12 col-sm-4">Title</th>
+            <th class="col-xs-12 col-sm-2">Due Date</th>
+            <th class="col-xs-12 col-sm-2">Description</th>
+            <th class="col-xs-12 col-sm-2">Completed</th>
+            <th class="col-xs-12 col-sm-2">Actions</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @todo_lists_items.each do |todo_item| %>
+            <tr>
+              <td><%= todo_item.title %></td>
+              <td><%= todo_item.due_date %></td>
+              <td><%= todo_item.description %></td>
+              <td><%= todo_item.completed %></td>
+              <td>
+                <%= link_to raw('<span class="glyphicon glyphicon-pencil"></span>'), edit_todo_list_todo_item_path(@todo_list, todo_item), {class: 'btn btn-default', title: 'Edit',  'data-placement': 'bottom', 'role': 'button'} %>
+                <%= link_to raw('<span class="glyphicon glyphicon-remove-sign"></span>'), [@todo_list,todo_item], {class: 'btn btn-default', title: 'Delete',  'data-placement': 'bottom', 'role': 'button', method: :delete, data: { confirm: 'Are you sure you want to delete the list?' }} %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="row m-bt-30">
     <div class="col-xs-12 col-sm-12">
