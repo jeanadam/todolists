@@ -4,12 +4,17 @@ class TodoListsController < ApplicationController
   # GET /todo_lists
   # GET /todo_lists.json
   def index
-    @todo_lists = current_user.todo_lists.paginate(page: params[:page], per_page: 8)
+    @todo_lists = current_user.todo_lists.order(:list_due_date => :asc).paginate(page: params[:page], per_page: 8)
   end
 
   # GET /todo_lists/1
   # GET /todo_lists/1.json
   def show
+    if params[:hist] == "1"
+      @todo_lists_items =  @todo_list.todo_items.order(:due_date => :asc)
+    else
+      @todo_lists_items =  @todo_list.todo_items.where('coalesce(completed,false) = false').order(:due_date => :asc)
+    end 
   end
 
   # GET /todo_lists/new
