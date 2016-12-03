@@ -1,4 +1,4 @@
-## Sample Todo List App
+## Super Fast and Responsive Todo List App
 It implements:
 
   * Nested resources
@@ -25,7 +25,7 @@ All the models and relationships required for this web app are:
         
 ### Functional Requirements
 
-   The basic version of this app was developed as part of a class assignment for the Coursera Course "Ruby On Rails", offered by John Hopkins University (JHU).
+   The basic version of this app was developed as part of a class assignment for the Coursera Course "Ruby On Rails", offered by John Hopkins University (JHU). It was than expanded for better astetics, performance and functionality.
 
-#### Last Updated: 2016-11-14
+#### Last Updated: 2016-12-03
 
